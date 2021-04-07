@@ -19,7 +19,7 @@ public class CustomerTest {
 
 	@Test
 	public void regularRental1DayTest() {
-		final String movieName = "movieName";
+		String movieName = "movieName";
 		Movie movie = new MovieBuilder().title(movieName).priceCode(Movie.REGULAR).build();
 		Rental rental = new RentalBuilder().movie(movie).daysRented(1).build();
 		String customerName = "customerName";
