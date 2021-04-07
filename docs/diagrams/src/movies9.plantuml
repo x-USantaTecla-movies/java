@@ -1,0 +1,40 @@
+@startuml movies
+
+class Customer {
+- String name;
+- List<Rental> rentals;
++ Costumer(String name) 
++ void addRental(Rental rental)
++ String getName()
++ String statement()
+- double getTotalCharge()
+- int getTotalFrequentRenterPoints()
+}
+
+class Rental {
+- Movie movie;
+- int daysRented;
++ Rental(Movie movie, int daysRented)
++ int getDaysRented()
++ Movie getMovie()
++ double getCharge()
++ int getFrequentRenterPoints()
+}
+
+class Movie {
++ static final int REGULAR = 0;
++ static final int NEW_RELEASE = 1;
++ static final int CHILDRENS = 2;
+- String title;
+- int priceCode;
++ Movie(String title, int priceCode)
++ int getPriceCode()
++ void setPriceCode(int priceCode)
++ String getTitle()
+}
+
+Customer o-down-> Rental
+Rental -down-> Movie
+
+@enduml
+

@@ -1,0 +1,70 @@
+@startuml movies
+
+class Customer {
+- String name;
+- List<Rental> rentals;
++ Costumer(String name) 
++ void addRental(Rental rental)
++ String getName()
++ String statement()
+- double getTotalCharge()
+- int getTotalFrequentRenterPoints()
+}
+
+class Rental {
+- Movie movie;
+- int daysRented;
++ Rental(Movie movie, int daysRented)
++ int getDaysRented()
++ Movie getMovie()
++ double getCharge()
++ int getFrequentRenterPoints()
+}
+
+class Movie {
++ static final int REGULAR = 0;
++ static final int NEW_RELEASE = 1;
++ static final int CHILDRENS = 2;
+- String title;
+- Price price;
++ Movie(String title, int priceCode)
++ double getCharge(int daysRented)
++ int getFrequentRenterPoints(int daysRented)
++ void setPriceCode(int priceCode)
++ String getTitle()
+}
+
+class Price {
++ int getPriceCode()
++ double getCharge(int daysRented)
++ int getFrequentRenterPoints(int daysRented)
+}
+class RegularPrice {
+{static}- double CHARGE = 2.0;
+{static}- double EXTRA CHARGE = 1.5;
+{static}- final int DAYS RENTED THRESHOLD = 2;
++ double getCharge(int daysRented)
+}
+class ChildrenPrice {
+{static}- double CHARGE = 1.5;
+{static}- double EXTRA CHARGE = 1.5;
+{static}- int DAYS RENTED THRESHOLD = 3;
++ double getCharge(int daysRented)
+}
+class NewReleasePrice {
+{static}- double CHARGE = 3;
+{static}- double EXTRA CHARGE = 1;
+{static}- int DAYS RENTED THRESHOLD = 2;
++ double getCharge(int daysRented)
++ int getFrequentRenterPoints(int daysRented)
+}
+
+Customer o-down-> Rental
+Rental -down-> Movie
+Movie *-down- Price
+Price <|-down- RegularPrice
+Price <|-down- ChildrenPrice
+Price <|-down- NewReleasePrice
+
+@enduml
+
