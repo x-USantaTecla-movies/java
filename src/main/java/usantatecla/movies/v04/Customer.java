@@ -50,8 +50,8 @@ public class Customer {
 		return result;
 	}
 
-	private double amountFor(Rental each) {
-		return each.getCharge();
+	private double amountFor(Rental rental) {
+		return rental.getCharge();
 	}
 	
 	
